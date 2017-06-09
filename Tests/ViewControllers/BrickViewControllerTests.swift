@@ -26,7 +26,7 @@ class BrickViewControllerTests: XCTestCase {
     func testDeinit() {
         var viewController: BrickViewController? = TestBrickViewController(nibName: "TestBrickViewController", bundle: Bundle(for: type(of: self)))
 
-        expectation(forNotification: "BrickViewController.deinit", object: nil, handler: nil)
+        expectation(forNotification: NSNotification.Name(rawValue: "BrickViewController.deinit"), object: nil, handler: nil)
         viewController?.viewDidLoad()
         viewController = nil
         waitForExpectations(timeout: 5, handler: nil)
@@ -37,7 +37,7 @@ class BrickViewControllerTests: XCTestCase {
         var viewController: TestBrickViewController? = TestBrickViewController(nibName: "TestBrickViewController", bundle: Bundle(for: type(of: self)))
         viewController?.labelTest = true
         
-        expectation(forNotification: "BrickViewController.deinit", object: nil, handler: nil)
+        expectation(forNotification: NSNotification.Name(rawValue: "BrickViewController.deinit"), object: nil, handler: nil)
         viewController?.viewDidLoad()
         viewController = nil
         waitForExpectations(timeout: 5, handler: nil)

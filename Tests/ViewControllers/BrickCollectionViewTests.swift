@@ -33,7 +33,7 @@ class BrickCollectionViewTests: XCTestCase {
         }
 
         brickView = CustomBrickCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
-        expectation(forNotification: "CustomBrickCollectionView.deinit", object: nil, handler: nil)
+        expectation(forNotification: NSNotification.Name(rawValue: "CustomBrickCollectionView.deinit"), object: nil, handler: nil)
         brickView = nil
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNil(brickView)
@@ -47,7 +47,7 @@ class BrickCollectionViewTests: XCTestCase {
         brickView = CustomBrickCollectionView(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
         let snapBehavior = SetZIndexLayoutBehavior(dataSource: FixedSetZIndexLayoutBehaviorDataSource(indexPaths: [:]))
         brickView.layout.behaviors = [snapBehavior]
-        expectation(forNotification: "CustomBrickCollectionView.deinit", object: nil, handler: nil)
+        expectation(forNotification: NSNotification.Name(rawValue: "CustomBrickCollectionView.deinit"), object: nil, handler: nil)
         brickView = nil
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNil(brickView)
@@ -711,7 +711,7 @@ class BrickCollectionViewTests: XCTestCase {
   
     func testThatBrickCollectionViewDoesNotCreateARetainCycleWithAsyncrhonousResizableCells() {
 
-        expectation(forNotification: "DeinitNotifyingAsyncBrickCell.deinit", object: nil, handler: nil)
+        expectation(forNotification: NSNotification.Name(rawValue: "DeinitNotifyingAsyncBrickCell.deinit"), object: nil, handler: nil)
         autoreleasepool {
             let brick = DeinitNotifyingAsyncBrick(size: BrickSize(width: .fill, height: .fill))
             brickView.setupSingleBrickAndLayout(brick)

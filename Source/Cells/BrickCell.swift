@@ -214,7 +214,7 @@ open class BrickCell: BaseBrickCell {
     open func heightForBrickView(withWidth width: CGFloat) -> CGFloat {
         self.layoutIfNeeded()
 
-        let size = self.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: 1000, verticalFittingPriority: 10)
+        let size = self.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: UILayoutPriority(rawValue: 1000), verticalFittingPriority: UILayoutPriority(rawValue: 10))
         return size.height
     }
 
